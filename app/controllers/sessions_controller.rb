@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
-  
   def create
-    user = User.find_by(email:login_params[:email])
-    if user && user.authenticate(login_params[:password])
+    user = User.find_by(email: login_params[:email])
+    if user
       session[:user_id] = user.id
       redirect_to '/dashboard'
     else
@@ -13,7 +14,7 @@ class SessionsController < ApplicationController
 
   private
 
-    def login_params
-      params.require(:login).permit(:email, :password)
-    end
+  def login_params
+    params.require(:login).permit(:email)
+  end
 end
