@@ -1,9 +1,14 @@
-<% if @user.events.any? %>
-		<h3>Submitted (<%= @user.events.count %>) events</h3>
-		<ul class="media-list">
-			<%= render @events %>
-		</ul>
-		<%= will_paginate @events %>
-	<% else %>
-		<h3>No Events Found</h3>
-	<% end %>
+<% if @user.attended_events.any? %>
+	<h2>Upcoming Events</h2> 
+	<ul class="media-list">
+		<%= render @upcoming_events %>
+	</ul>
+<% else %>
+	<h2>No Upcoming Events</h2>
+<% end %>
+
+<% if @events.past.any? %>
+	<ul class="media-list">
+		<%= render @events.past %>
+	</ul>
+<% end %>

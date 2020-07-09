@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+
+  @upcoming_events = @user.upcoming_events
+  
   def index; end
 
   def create
